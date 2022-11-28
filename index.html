@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>express</title>
+</head>
+<body>
+    <h1>
+        hello express
+        <form action="/users" method="post">
+            <input type="text" name="user">
+            <input type="text" name="id">
+            <button type="submit">Submit</button>
+        </form>
+        <br> <br>
+        <button class="btn" > click </button>
+        <button class='btn1'> get json </button>
+    </h1>
+    <script>
+        const btn = document.querySelector('.btn');
+        const btn1 = document.querySelector('.btn1');
+
+        btn1.addEventListener('click', ()=>{
+            fetch('/users').then((res)=>res.json())
+            .then((data)=> {
+                console.log(data)
+                data.users.forEach(element => {
+                    console.log(element);
+                });
+            });
+        })
+        
+        btn.addEventListener('click', ()=>{
+            console.log('clicked');
+        }
+        )
+
+    </script>
+</body>
+</html>
