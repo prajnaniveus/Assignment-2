@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/postData', (req,res) => {
-   letbdata=[];
+   let data=[];
     data.push(req.body.id)
     data.push(req.body.name)
     res.send(data)
