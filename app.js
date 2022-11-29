@@ -1,39 +1,27 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
-
 const app = express();
+const bodyParse = require('body-parser');
+let cors=require("cors");
+const port=2000;
+app.use(bodyParse.json())
+app.use(cors());
 
-const port = process.env.PORT || 5000;
 
-app.use(bodyParser.urlencoded({extended:true}))
-
-
-const myObj = {users: [
-    {
-        id:1,
-        name:'prajna'
-    },
-    {
-        id:2,
-        name:'apple'
-    },{
-        id:3,
-        name:'orange'
-    }
-]}
-
-console.log(myObj);
-
-app.get('/users',(req, res) => {
-    res.json(myObj)
+app.get('/',(req,res)=>{
+    let query=req.query
+    let path=req.path
+    console.log(query)
+    console.log(path)
+    res.json({"info":{query,path}})
 })
 
-app.post('/users', (req,res) => {
-    console.log(req.body);    
-    res.send(`Done : User = ${req.body.user}  &  Id = ${req.body.id}`);
-});
+app.post('/postData', (req,res) => {
+   letbdata=[];
+    data.push(req.body.id)
+    data.push(req.body.name)
+    res.send(data)
+})
 
 app.listen(port, () => {
-    console.log(`server running at ${port}`);
-});
+    console.log('listening to server http://localhost:',port);
+})
